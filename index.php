@@ -14,7 +14,8 @@
                 <div class="col-6">
                     <section class="todo-list">
                         <ul class="list-group">
-                            <li class="list-group-item list-group-item-action" v-for="(todoElement, index) in todoList" :key="index">
+                            <li class="list-group-item list-group-item-action" v-for="(todoElement, index) in todoList" :key="index"
+                            :class="todoElement.completato ? 'text-decoration-line-through' : '' ">
                                 {{ todoElement.nome }}
                             </li>
                         </ul>
