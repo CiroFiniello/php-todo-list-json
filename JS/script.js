@@ -12,28 +12,23 @@ createApp({
         getTodoList() {
             axios.get(this.apiUrl)
                 .then((response) => {
-                    console.log(response);
-                    if (response.data.tasks && Array.isArray(response.data.tasks)) {
-                        this.todoList = response.data.tasks;
-                    } else {
-                        console.error("Invalid data format from API");
-                    }
+                    console.log(response.data.tasks);
+                    this.todoList = response.data.tasks;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         },
         addTask() {
-            if (this.newTaskName.trim() !== '') {
-                const newTodoObj = {
-                    nome: this.newTaskName,
-                    descrizione: this.newTaskName,
-                    completato: false
+                    const newTodoObj = {
+                        nome: this.newTaskName,
+                        descrizione: this.newTaskName,
+                        completato: false
                 };
+                console.log(this.newTaskName);
                 this.todoList.push(newTodoObj);
                 this.newTaskName = ''; // Clear the input field
             }
-        }
     },
     created() {
         this.getTodoList();
