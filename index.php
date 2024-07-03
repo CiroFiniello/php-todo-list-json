@@ -20,6 +20,12 @@
                             </li>
                         </ul>
                     </section>
+                    <section class="user-input mt-3">
+                        <div class="input-group">
+                            <input type="text" name="newTask" id="newTask" class="form-control" @keyup.enter="addTask" v-model="newTaskName" placeholder="Add a new task">
+                            <button class="btn btn-primary" @click="addTask">Add Task</button>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>

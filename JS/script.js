@@ -5,6 +5,7 @@ createApp({
         return {
             todoList: [],
             apiUrl: './api/get_all_list.php',
+            newTaskName: '',
         }
     },
     methods: {
@@ -12,7 +13,6 @@ createApp({
             axios.get(this.apiUrl)
                 .then((response) => {
                     console.log(response);
-                    // Assicurati che response.data.tasks esista e sia un array
                     if (response.data.tasks && Array.isArray(response.data.tasks)) {
                         this.todoList = response.data.tasks;
                     } else {
@@ -22,6 +22,17 @@ createApp({
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        addTask() {
+            if (this.newTaskName.trim() !== '') {
+                const newTodoObj = {
+                    nome: this.newTaskName,
+                    descrizione: this.newTaskName,
+                    completato: false
+                };
+                this.todoList.push(newTodoObj);
+                this.newTaskName = ''; // Clear the input field
+            }
         }
     },
     created() {
